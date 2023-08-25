@@ -3,7 +3,7 @@ import { IsNotEmpty } from 'class-validator';
 import { Post } from "./post.model";
 import { Comment } from "./comment.model";
 
-@Entity()
+@Entity("users")
 export class User {
     @PrimaryGeneratedColumn()
     id: number;
