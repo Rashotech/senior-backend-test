@@ -23,7 +23,7 @@ export class UserService {
     return await UsersRepository.createQueryBuilder("user")
     .where("user.email = :email", { email })
     .addSelect("user.password")
-    .getOneOrFail()
+    .getOne()
   }
 
   public async register(data: IRegister): Promise<User> {
