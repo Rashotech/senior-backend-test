@@ -3,7 +3,7 @@ export class SuccessResponse {
   statusCode: number;
   data: any;
 
-  constructor(data: any, message = 'Successful', statusCode = 200) {
+  constructor(message = 'successful', data?: any, statusCode = 200) {
     this.statusCode = statusCode;
     this.message = message;
     this.data = data;

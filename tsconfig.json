@@ -1,16 +1,21 @@
 {
    "compilerOptions": {
-      "lib": [
-         "es5",
-         "es6"
-      ],
-      "target": "es5",
-      "module": "commonjs",
-      "esModuleInterop": true,
-      "moduleResolution": "node",
-      "outDir": "./build",
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "sourceMap": true
-   }
-}
+     "allowJs": true,
+     "checkJs": false,
+     "moduleResolution": "node",
+     "lib": [
+      "es5",
+      "es6"
+    ],
+    "target": "es5",
+     "outDir": "build",
+     "esModuleInterop": true,
+     "experimentalDecorators": true,
+     "noImplicitAny": false,
+     "emitDecoratorMetadata": true,
+     "strictPropertyInitialization": false
+   },
+   "include": ["./typings", "src"],
+   "exclude": ["node_modules"]
+ }
+ 

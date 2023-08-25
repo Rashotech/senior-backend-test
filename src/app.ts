@@ -3,8 +3,6 @@ import { Server } from 'http';
 import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import { Service } from 'typedi';
-import { useContainer } from 'typeorm';
-import { Container as TypeORMContainer } from 'typeorm-typedi-extensions';
 
 import config from './config';
 import logger from './utils/logger';
@@ -19,20 +17,19 @@ export class App {
 
   constructor() {
     this.expressApplication = express();
-    this.initializeMiddleware();
-    this.configureDependencyInjection();
+    this.initializeMiddlewares();
+    this.initializeRoutes();
   }
 
-  private initializeMiddleware(): void {
+  private initializeMiddlewares(): void {
     this.expressApplication.use(cors());
     this.expressApplication.use(express.json());
-    this.expressApplication.use('/api/v1', routes);
-    this.expressApplication.use((req: Request, _res: Response, next: NextFunction) => next(new NotFoundError(req.path)));
-    this.expressApplication.use(ErrorHandler.handle());
   }
 
-  private configureDependencyInjection(): void {
-    useContainer(TypeORMContainer);
+  private initializeRoutes(): void {
+    this.expressApplication.use(routes);
+    this.expressApplication.use((req: Request, _res: Response, next: NextFunction) => next(new NotFoundError(req.path)));
+    this.expressApplication.use(ErrorHandler.handle());
   }
 
   public async startExpressServer(): Promise<Server> {

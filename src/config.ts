@@ -13,7 +13,6 @@ const config = {
   environment: process.env.NODE_ENV,
   jwtSecret: process.env.JWT_SECRET ?? '',
   jwtAcessExpirationMinutes: 1440,
-  jwtRefreshExpirationDays: 365,
 };
 
 export default config;

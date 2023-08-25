@@ -1,11 +1,8 @@
-import { Service } from 'typedi';
-import { DataSource, Repository } from 'typeorm';
+import { AppDataSource } from '../database/data-source';
 import { User } from '../models/user.model';
 
-@Service()
-export class UsersRepository extends Repository<User> {
-  constructor(private dataSource: DataSource) {
-    super(User, dataSource.createEntityManager());
-  }
-}
-
+export const UsersRepository = AppDataSource.getRepository(User).extend({
+  findByEmail(email: string) {
+      return this.findOne({ where: { email } });
+  },
+})

@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { Exclude } from 'class-transformer';
 import { IsNotEmpty } from 'class-validator';
 
 @Entity()
@@ -13,7 +12,6 @@ export class User {
 
     @IsNotEmpty()
     @Column()
-    @Exclude()
     firstName: string;
 
     @IsNotEmpty()
@@ -21,7 +19,7 @@ export class User {
     lastName: string;
 
     @IsNotEmpty()
-    @Column()
+    @Column({ select: false })
     password: string;
 
     @CreateDateColumn()
