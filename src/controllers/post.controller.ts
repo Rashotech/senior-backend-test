@@ -24,4 +24,13 @@ export default class PostController {
     const response = await this.postService.findUserPosts(id);
     return new SuccessResponse('User Posts fetched Successfully', response);
   });
+
+  public postComment = asyncWrapper(async (req: Request) => {
+    const { postId } = req.params;
+    const { content } = req.body;
+    const user = req.user;
+    const data = { postId, content, user }
+    const response = await this.postService.createComment(data);
+    return new SuccessResponse('User Posts fetched Successfully', response);
+  });
 }

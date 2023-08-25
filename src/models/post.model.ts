@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany } from "typeorm";
 import { IsNotEmpty } from 'class-validator';
 import { User } from "./user.model";
+import { Comment } from "./comment.model";
 
 @Entity()
 export class Post {
@@ -17,6 +18,9 @@ export class Post {
 
     @ManyToOne(() => User, user => user.posts)
     user: User;
+
+    @OneToMany(() => Comment, comment => comment.post)
+    comments: Comment[];
 
     @CreateDateColumn()
     createdAt: Date;

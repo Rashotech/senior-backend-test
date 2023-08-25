@@ -28,7 +28,8 @@ export class App {
 
   private initializeRoutes(): void {
     this.expressApplication.use(routes);
-    this.expressApplication.use((req: Request, _res: Response, next: NextFunction) => next(new NotFoundError(req.path)));
+    this.expressApplication.use((req: Request, _res: Response, next: NextFunction) => 
+    next(new NotFoundError(`The requested path ${req.path} not found!`)));
     this.expressApplication.use(ErrorHandler.handle());
   }
 

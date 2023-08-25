@@ -25,7 +25,7 @@ export default class AuthMiddleware {
         next(new UnAuthorizedError('Unauthorized'));
       }
 
-      // req.user = user;
+      req.user = user;
       next();
     } catch (error) {
       next(new UnAuthorizedError('Unauthorized'))
