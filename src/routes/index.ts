@@ -1,13 +1,18 @@
 import express from 'express';
 import { IRoute } from '../interfaces/common.interface';
 import userRoute from './user.route';
+import postRoute from './post.route';
 
 const router = express.Router();
 
 const allRoutes: IRoute[] = [
   {
-    path: '/user',
+    path: '/',
     route: userRoute,
+  },
+  {
+    path: '/',
+    route: postRoute,
   },
 ];
 

@@ -2,12 +2,6 @@
    "compilerOptions": {
      "allowJs": true,
      "checkJs": false,
-     "moduleResolution": "node",
-     "lib": [
-      "es5",
-      "es6"
-    ],
-    "target": "es5",
      "outDir": "build",
      "esModuleInterop": true,
      "experimentalDecorators": true,

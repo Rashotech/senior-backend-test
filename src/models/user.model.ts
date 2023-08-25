@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
 import { IsNotEmpty } from 'class-validator';
+import { Post } from "./post.model";
 
 @Entity()
 export class User {
@@ -21,6 +22,9 @@ export class User {
     @IsNotEmpty()
     @Column({ select: false })
     password: string;
+
+    @OneToMany(() => Post, post => post.user)
+    posts: Post[];
 
     @CreateDateColumn()
     createdAt: Date;

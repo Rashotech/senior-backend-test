@@ -8,8 +8,8 @@ const router = express.Router();
 
 const userController = Container.get(UserController);
 
-router.post('/', RequestValidator.validate(RegisterValidation), userController.register);
-router.post('/login', RequestValidator.validate(LoginValidation), userController.login);
-router.get('/', userController.getUsers);
+router.post('/users', RequestValidator.validate(RegisterValidation), userController.register);
+router.post('/users/login', RequestValidator.validate(LoginValidation), userController.login);
+router.get('/users', userController.getUsers);
 
 export default router;
